@@ -5,6 +5,6 @@
 </head>
 <body>
     <h1>Welcome to the Online Medical Store</h1>
-    <a href="registerUser">register</a>
+    <a href="registerpage">register</a>
 </body>
 </html>

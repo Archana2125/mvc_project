@@ -1,5 +1,28 @@
 package com.nt.service;
 
-public class UserServiceImpl {
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.nt.Dao.UserDao;
+import com.nt.Entity.Address;
+import com.nt.Entity.User;
+@Service
+public class UserServiceImpl implements UserService {
+
+		@Autowired
+		UserDao userDao;
+	
+	@Override
+	public void registerUser(User user,Address address) {
+		
+		List<Address> addList=new ArrayList();
+		addList.add(address);
+		
+		user.setAddressList(addList);
+		userDao.save(user);
+	}
 
 }
