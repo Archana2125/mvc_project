@@ -6,5 +6,6 @@
 <body>
     <h1>Welcome to the Online Medical Store</h1>
     <a href="registerpage">register</a>
+    <a href="loginpage">Login</a>
 </body>
 </html>

@@ -20,7 +20,8 @@ public class UserController {
 	
 		@Autowired
 		UserService userService;
-		
+
+		/************************ REgister ***********************/
 		@RequestMapping("/")
 		public String showlandingpage() {
 			return "index";
@@ -44,7 +45,12 @@ public class UserController {
 			return ResponseEntity.ok("User added");
 		}
 		
+		/************************ Login ***********************/
 		
+		@RequestMapping("/loginpage")
+		public String showloginPage() {
+			return "login";
+		}
 
 	
 
