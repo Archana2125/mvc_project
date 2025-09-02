@@ -39,7 +39,6 @@ public class UserController {
 			
 			Address address = userDto.getAddress();
 			System.out.println(address);
-			System.out.println(address);
 			
 			address.setUser(user);
 			userService.registerUser(user,address);
