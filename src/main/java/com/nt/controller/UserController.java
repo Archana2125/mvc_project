@@ -34,7 +34,12 @@ public class UserController {
 		public  ResponseEntity<String> registerUser(@ModelAttribute UserDto userDto)
 		{
 			User user=userDto.getUser();
+			System.out.println(user);
+			
 			Address address = userDto.getAddress();
+			System.out.println(address);
+			
+			address.setUser(user);
 			userService.registerUser(user,address);
 			return ResponseEntity.ok("User added");
 		}

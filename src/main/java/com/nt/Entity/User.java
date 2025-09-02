@@ -1,5 +1,6 @@
 package com.nt.Entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.data.web.JsonPath;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -47,7 +51,8 @@ public class User {
 	private String contactno;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-	private List<Address> addressList;
+	@NotNull
+	 private List<Address> addresses = new ArrayList<>();
 
 	public Long getUser_id() {
 		return user_id;
@@ -129,13 +134,23 @@ public class User {
 		this.contactno = contactno;
 	}
 
-	public List<Address> getAddressList() {
-		return addressList;
+	public List<Address> getAddresses() {
+		return addresses;
 	}
 
-	public void setAddressList(List<Address> addressList) {
-		this.addressList = addressList;
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
 	}
+
+	@Override
+	public String toString() {
+		return "User [user_id=" + user_id + ", first_name=" + first_name + ", middle_name=" + middle_name
+				+ ", last_name=" + last_name + ", email=" + email + ", user_name=" + user_name + ", password="
+				+ password + ", Conformpassword=" + Conformpassword + ", role=" + role + ", contactno=" + contactno
+				+ ", addresses=" + addresses + "]";
+	}
+
+	
 
 
 	

@@ -11,6 +11,7 @@ public class UserDto
 {
 	private User user;
 	private Address address;
+	
 	public User getUser() {
 		return user;
 	}
@@ -23,6 +24,12 @@ public class UserDto
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+	@Override
+	public String toString() {
+		return "UserDto [user=" + user + ", address=" + address + "]";
+	}
+	
+	
 	
 	
 	

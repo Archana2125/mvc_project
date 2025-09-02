@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 		List<Address> addList=new ArrayList();
 		addList.add(address);
 		
-		user.setAddressList(addList);
+		user.setAddresses(addList);
 		userDao.save(user);
 	}
 

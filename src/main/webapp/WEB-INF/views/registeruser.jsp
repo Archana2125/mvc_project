@@ -74,19 +74,19 @@
         <legend>User Information</legend>
 
         <label for="first_name">First Name:</label>
-<input type="text" id="first_name" name="user.firstName" placeholder="John" required>
+<input type="text" id="first_name" name="user.first_name" placeholder="John" required>
 
 <label for="middle_name">Middle Name:</label>
-<input type="text" id="middle_name" name="user.middleName" placeholder="A.">
+<input type="text" id="middle_name" name="user.middle_name" placeholder="A.">
 
 <label for="last_name">Last Name:</label>
-<input type="text" id="last_name" name="user.lastName" placeholder="Doe" required>
+<input type="text" id="last_name" name="user.last_name" placeholder="Doe" required>
 
 <label for="email">Email:</label>
 <input type="email" id="email" name="user.email" placeholder="john@example.com" required>
 
 <label for="user_name">Username:</label>
-<input type="text" id="user_name" name="user.userName" placeholder="johndoe123" required>
+<input type="text" id="user_name" name="user.user_name" placeholder="johndoe123" required>
 
 <label for="password">Password:</label>
 <input type="password" id="password" name="user.password" required>
@@ -98,7 +98,7 @@
 <input type="text" id="role" name="user.role" placeholder="user/admin">
 
 <label for="contactno">Contact No:</label>
-<input type="text" id="contactno" name="user.contactNo" placeholder="1234567890" pattern="[0-9]{10}" required>
+<input type="text" id="contactno" name="user.contactno" placeholder="1234567890" pattern="[0-9]{10}" required>
         
     <fieldset>
         <legend>Address Information</legend>
@@ -107,7 +107,7 @@
         <input type="text" id="house_name" name="address.house_name" placeholder="Sunshine Villa" required>
 
         <label for="house_ho">House No:</label>
-        <input type="number" id="house_ho" name="address.house_no" required>
+        <input type="number" id="house_no" name="address.house_no" required>
 
         <label for="city">City:</label>
         <input type="text" id="city" name="address.city" placeholder="Mumbai" required>
