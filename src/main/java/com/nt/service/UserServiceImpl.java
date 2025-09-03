@@ -25,4 +25,17 @@ public class UserServiceImpl implements UserService {
 		userDao.save(user);
 	}
 
+	@Override
+	public User login(String userName, String password) {
+		User user=userDao.findByUserNameAndPassword(userName, password);
+		
+		if(user!=null&& user.getPassword().equals(password))
+		{
+			return user ;
+			
+		}
+		return null;
+		
+	}
+
 }

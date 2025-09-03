@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.data.web.JsonPath;
@@ -37,13 +39,17 @@ public class User {
 	private String last_name;
 	
 	@Email
+	@Column(nullable = false,unique = true)
 	private String email;
 	
-	private String user_name;
+	@Column(name = "user_name") 
+	private String userName;    
+
 	
 	private String password;
 	
 	@Transient // Not stored in DB
+	@NotBlank
 	private String Conformpassword;
 	
 	private String role;
@@ -95,11 +101,11 @@ public class User {
 	}
 
 	public String getUser_name() {
-		return user_name;
+		return userName;
 	}
 
 	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+		this.userName = user_name;
 	}
 
 	public String getPassword() {
@@ -145,7 +151,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [user_id=" + user_id + ", first_name=" + first_name + ", middle_name=" + middle_name
-				+ ", last_name=" + last_name + ", email=" + email + ", user_name=" + user_name + ", password="
+				+ ", last_name=" + last_name + ", email=" + email + ", user_name=" + userName + ", password="
 				+ password + ", Conformpassword=" + Conformpassword + ", role=" + role + ", contactno=" + contactno
 				+ ", addresses=" + addresses + "]";
 	}
