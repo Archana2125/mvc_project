@@ -1,5 +1,6 @@
 package com.nt.Entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,19 +23,21 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long address_id;
-	
+	@Column(nullable = false)
 	private String house_name;
-	
+	@Column(nullable = false)
 	private String city;
-	
+	@Column(nullable = false)
 	private String landmark;
-	
+	@Column(nullable = false)
 	private Integer house_no;
-	
+	@Column(nullable = false)
 	private Integer pincode;
-	
+	@Column(nullable = false)
 	private String district;
 	
+	
+	//gettrr setter
 	public Long getAddress_id() {
 		return address_id;
 	}

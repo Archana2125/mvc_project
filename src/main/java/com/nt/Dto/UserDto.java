@@ -11,6 +11,8 @@ public class UserDto
 {
 	private User user;
 	private Address address;
+	private String password;
+	private String Conformpassword;
 	
 	public User getUser() {
 		return user;
@@ -24,10 +26,20 @@ public class UserDto
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	@Override
-	public String toString() {
-		return "UserDto [user=" + user + ", address=" + address + "]";
+	
+	public String getPassword() {
+		return password;
 	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getConformpassword() {
+		return Conformpassword;
+	}
+	public void setConformpassword(String conformpassword) {
+		Conformpassword = conformpassword;
+	}
+	
 	
 	
 	

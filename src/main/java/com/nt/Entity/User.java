@@ -31,29 +31,29 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long user_id;
-	
+	@Column(nullable = false)
 	private String first_name;
 	
 	private String middle_name;
-	
+	@Column(nullable = false)
 	private String last_name;
 	
 	@Email
 	@Column(nullable = false,unique = true)
 	private String email;
 	
-	@Column(name = "user_name") 
+	@Column(name = "user_name",nullable = false) 
 	private String userName;    
 
-	
+	@Column(nullable = false)
 	private String password;
 	
 	@Transient // Not stored in DB
 	@NotBlank
 	private String Conformpassword;
-	
+	@Column(nullable = false)
 	private String role;
-	
+	@Column(nullable = false)
 	private String contactno;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

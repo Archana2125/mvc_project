@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.nt.Dto.UserDto;
 
 import com.nt.Entity.Address;
@@ -25,6 +26,7 @@ public class UserController {
 	
 		@Autowired
 		UserService userService;
+		
 
 		/************************ Landing Page ***********************/
 		@RequestMapping("/")
@@ -39,8 +41,17 @@ public class UserController {
 			
 		}
 		@PostMapping("/registerUser")
-		public  ResponseEntity<String> registerUser(@ModelAttribute @Valid UserDto userDto)
-		{
+		public  String registerUser(@ModelAttribute @Valid UserDto userDto,Model model)
+		{	
+			String pass=userDto.getPassword();
+			String conformpass=userDto.getConformpassword();
+			
+			if(pass == null || conformpass == null || !pass.equals(conformpass))
+			{
+				model.addAttribute("wrongpass", "password not match ");
+				return"registeruser";
+			}
+			
 			User user=userDto.getUser();
 			System.out.println(user);
 			
@@ -49,7 +60,11 @@ public class UserController {
 			
 			address.setUser(user);
 			userService.registerUser(user,address);
-			return ResponseEntity.ok("User added");
+			
+			return "login";
+			
+			
+			
 		}
 		
 		/************************ Login ***********************/
@@ -80,9 +95,7 @@ public class UserController {
 					return"user-Dashboard";
 				}
 				 
-				 else {
-					 return"registeruser";
-				 }
+				 
 			 }
 			model.addAttribute("errormsg", "invalid userName or password");
 			return "login";
