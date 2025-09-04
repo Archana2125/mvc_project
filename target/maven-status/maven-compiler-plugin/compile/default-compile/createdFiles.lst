@@ -1,6 +1,7 @@
 com\nt\Entity\Products.class
 com\nt\Entity\User.class
 com\nt\service\UserServiceImpl.class
+com\nt\Dto\ForgotPassDto.class
 com\nt\controller\UserController.class
 com\nt\Entity\OrderItem.class
 com\nt\Dao\UserDao.class

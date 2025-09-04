@@ -8,13 +8,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.nt.Dto.ForgotPassDto;
 import com.nt.Dto.UserDto;
 
 import com.nt.Entity.Address;
@@ -40,11 +41,11 @@ public class UserController {
 			return "registeruser";
 			
 		}
-		@PostMapping("/registerUser")
+		@RequestMapping("/registerUser")
 		public  String registerUser(@ModelAttribute @Valid UserDto userDto,Model model)
 		{	
 			String pass=userDto.getPassword();
-			String conformpass=userDto.getConformpassword();
+			String conformpass=userDto.getConfirmPassword();
 			
 			if(pass == null || conformpass == null || !pass.equals(conformpass))
 			{
@@ -53,6 +54,8 @@ public class UserController {
 			}
 			
 			User user=userDto.getUser();
+			user.setPassword(pass); 
+		    user.setConformpassword(conformpass);
 			System.out.println(user);
 			
 			Address address = userDto.getAddress();
@@ -101,8 +104,32 @@ public class UserController {
 			return "login";
 			
 		}
+		
+		/************************ Forgot Password ***********************/
 
-	
+		@RequestMapping("/forgotpass")
+		public String ForgotPasswordPage() {
+			return "forgotPass";
+		}
+		@RequestMapping("/forgot")
+		public String ForgotPassword(@ModelAttribute ForgotPassDto forgotPassDto ,Model model) {
+			String username=forgotPassDto.getUserName();
+			String pass=forgotPassDto.getPassword();
+			String conformpass=forgotPassDto.getConfirmPassword();
+			
+			if(username==null||pass == null || conformpass == null || !pass.equals(conformpass)){
+				model.addAttribute("error", " username or password not match ");
+				return"forgotPass";
+			}
+			String result=	userService.ForgotPassword(username,pass);
+			if ("failure".equals(result)) {
+		        model.addAttribute("error", "User not found or update failed");
+		        return "forgotPass";
+		    }
+			model.addAttribute("success", "pasword update sucessfull");
+			return "login";
+			
+		}
 
 
 }

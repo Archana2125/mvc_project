@@ -38,4 +38,10 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public String ForgotPassword(String userName, String password) {
+		int rows=	userDao.updatePasswordByUsername(userName, password);
+		return rows>0?"success":"failure";
+	}
+
 }

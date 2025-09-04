@@ -13,4 +13,6 @@ public interface UserService {
 
 	User login(String userName, String password);
 
+	String ForgotPassword(String userName, String password);
+
 }

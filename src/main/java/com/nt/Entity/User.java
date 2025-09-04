@@ -49,8 +49,8 @@ public class User {
 	private String password;
 	
 	@Transient // Not stored in DB
-	@NotBlank
-	private String Conformpassword;
+	
+	private String confirmPassword;
 	@Column(nullable = false)
 	private String role;
 	@Column(nullable = false)
@@ -117,11 +117,11 @@ public class User {
 	}
 
 	public String getConformpassword() {
-		return Conformpassword;
+		return confirmPassword;
 	}
 
 	public void setConformpassword(String conformpassword) {
-		Conformpassword = conformpassword;
+		confirmPassword = conformpassword;
 	}
 
 	public String getRole() {
@@ -152,7 +152,7 @@ public class User {
 	public String toString() {
 		return "User [user_id=" + user_id + ", first_name=" + first_name + ", middle_name=" + middle_name
 				+ ", last_name=" + last_name + ", email=" + email + ", user_name=" + userName + ", password="
-				+ password + ", Conformpassword=" + Conformpassword + ", role=" + role + ", contactno=" + contactno
+				+ password + ", Conformpassword=" + confirmPassword + ", role=" + role + ", contactno=" + contactno
 				+ ", addresses=" + addresses + "]";
 	}
 

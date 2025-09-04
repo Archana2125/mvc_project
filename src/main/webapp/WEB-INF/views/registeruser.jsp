@@ -1,32 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Register User</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         body {
-            background-color: #f6f6f6;
+            background-color: #121212;
+            color: #f1f1f1;
             padding: 20px;
         }
+
         .form-step {
             display: none;
         }
+
         .form-step.active {
             display: block;
         }
+
         form {
-            background-color: white;
+            background-color: #1f1f1f;
             max-width: 800px;
             margin: auto;
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
         }
-        button {
-            margin-top: 20px;
+
+        label {
+            color: #ffffff;
+        }
+
+        .form-control {
+            background-color: #2c2c2c;
+            color: #ffffff;
+            border: 1px solid #444;
+        }
+
+        .form-control:focus {
+            background-color: #2c2c2c;
+            color: #ffffff;
+            border-color: #0d6efd;
+            box-shadow: none;
+        }
+
+        .form-check-label {
+            color: #ccc;
+        }
+
+        .btn-primary, .btn-secondary, .btn-success {
+            border: none;
+        }
+
+        .btn-primary:hover, .btn-secondary:hover, .btn-success:hover {
+            opacity: 0.9;
+        }
+
+        .btn-primary { background-color: #0d6efd; }
+        .btn-secondary { background-color: #6c757d; }
+        .btn-success { background-color: #28a745; }
+
+        .error-text {
+            color: #ff6b6b;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -58,19 +98,20 @@
                 <label>Username:</label>
                 <input type="text" name="user.user_name" class="form-control" required>
             </div>
-            
-            <!-- Password and Confirm Password Side by Side -->
+
             <div class="col-md-6">
-            	<c:if test="${not empty wrongpass}">
-   <div style="color: red;">${wrongpass}</div>
-</c:if>
                 <label>Password:</label>
-                <input type="password" name="user.password" class="form-control" required>
+                <input type="password" name="password" class="form-control" required>
             </div>
             <div class="col-md-6">
                 <label>Confirm Password:</label>
-                <input type="password" name="user.Conformpassword" class="form-control" required>
+                <input type="password" name="confirmPassword" class="form-control" required>
             </div>
+
+            <c:if test="${not empty wrongpass}">
+    <div class="col-md-12 error-text">${wrongpass}</div>
+</c:if>
+
 
             <!-- Role as Radio Buttons -->
             <div class="col-md-6">
@@ -103,7 +144,7 @@
             </div>
             <div class="col-md-6">
                 <label>House No:</label>
-                <input type="number" name="address. house_no" class="form-control" required>
+                <input type="number" name="address.house_no" class="form-control" required>
             </div>
             <div class="col-md-6">
                 <label>City:</label>
