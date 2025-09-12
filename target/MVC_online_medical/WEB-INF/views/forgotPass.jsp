@@ -7,7 +7,9 @@
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+	<!-- Bootstrap Icons -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+	
     <style>
         body {
             background-color: #121212;
@@ -70,16 +72,20 @@
 <div class="login-card">
     <h3 class="text-center mb-4">Forgot Password</h3>
 
+    
     <c:if test="${not empty error}">
-        <div class="alert alert-danger" role="alert">
-            ${error}
-        </div>
-    </c:if>
+    <script>
+        alert("${error}");
+    </script>
+</c:if>
+ 
+
+
 
     <form action="forgot" method="post">
         <div class="mb-3">
             <label>Username:</label>
-            <input type="text" name="user.user_name" class="form-control" required>
+            <input type="text" name="userName" class="form-control" required>
         </div>
 
         <div class="mb-3">
@@ -89,7 +95,7 @@
 
         <div class="mb-3">
             <label>Confirm Password:</label>
-            <input type="password" name="user.Conformpassword" class="form-control" placeholder="Confirm password" required>
+            <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm password" required>
         </div>
 
         <button type="submit" class="btn btn-primary w-100">Set Password</button>

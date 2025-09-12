@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nt.Dao.CategoryDao;
 import com.nt.Dao.UserDao;
 import com.nt.Entity.Address;
 import com.nt.Entity.User;
@@ -14,7 +15,8 @@ public class UserServiceImpl implements UserService {
 
 		@Autowired
 		UserDao userDao;
-	
+		
+		
 	@Override
 	public void registerUser(User user,Address address) {
 		

@@ -69,14 +69,18 @@
 
     <div class="login-card">
         <h3 class="text-center mb-4">Login</h3>
-
-        <!-- Show error message if present -->
-        <c:if test="${not empty errormsg}">
-            <div class="alert alert-danger" role="alert">
-                ${errormsg}
-            </div>
-        </c:if>
-
+		
+		<c:if test="${not empty success}">
+    <script>
+        alert("${success}");
+    </script>
+	</c:if>
+    <c:if test="${not empty errormsg}">
+    <script>
+        alert("${errormsg}");
+    </script>
+	</c:if>    
+	
         <form action="login" method="post">
             <div class="mb-3">
                 <label for="userName" class="form-label">Username</label>

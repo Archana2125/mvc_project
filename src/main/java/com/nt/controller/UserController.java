@@ -91,10 +91,12 @@ public class UserController {
 				 
 				 if("admin".equalsIgnoreCase(role))
 				 {
+					 httpSession.setAttribute("adminName", user.getUser_name()); 
 					return "admin-Dashboard"; 
 				 }
 				 
 				 else if ("user".equalsIgnoreCase(role)) {
+					 httpSession.setAttribute("userName", user.getUser_name()); 
 					return"user-Dashboard";
 				}
 				 
@@ -130,6 +132,14 @@ public class UserController {
 			return "login";
 			
 		}
-
+		/************************ Logout ***********************/
+		@RequestMapping("/logout")
+		public String logout(HttpSession httpSession,Model model)
+		{
+			httpSession.invalidate();
+			model.addAttribute("logout","logout sucess");
+			return "index";
+			
+		}
 
 }

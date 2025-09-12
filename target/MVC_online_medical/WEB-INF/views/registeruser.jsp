@@ -101,16 +101,17 @@
 
             <div class="col-md-6">
                 <label>Password:</label>
-                <input type="password" name="user.password" class="form-control" required>
+                <input type="password" name="password" class="form-control" required>
             </div>
             <div class="col-md-6">
                 <label>Confirm Password:</label>
-                <input type="password" name="user.Conformpassword" class="form-control" required>
+                <input type="password" name="confirmPassword" class="form-control" required>
             </div>
 
             <c:if test="${not empty wrongpass}">
-                <div class="col-md-12 error-text">${wrongpass}</div>
-            </c:if>
+    <div class="col-md-12 error-text">${wrongpass}</div>
+</c:if>
+
 
             <!-- Role as Radio Buttons -->
             <div class="col-md-6">
@@ -143,7 +144,7 @@
             </div>
             <div class="col-md-6">
                 <label>House No:</label>
-                <input type="number" name="address. house_no" class="form-control" required>
+                <input type="number" name="address.house_no" class="form-control" required>
             </div>
             <div class="col-md-6">
                 <label>City:</label>
