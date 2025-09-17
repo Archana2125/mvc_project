@@ -11,6 +11,7 @@ D:\java\Springmvc\MVC_online_medical\src\main\java\com\nt\Entity\Products.java
 D:\java\Springmvc\MVC_online_medical\src\main\java\com\nt\service\AdminService.java
 D:\java\Springmvc\MVC_online_medical\src\main\java\com\nt\Entity\Cart.java
 D:\java\Springmvc\MVC_online_medical\src\main\java\com\nt\Dao\BrandDao.java
+D:\java\Springmvc\MVC_online_medical\src\main\java\com\nt\Dao\ProductDao.java
 D:\java\Springmvc\MVC_online_medical\src\main\java\com\nt\Dto\ForgotPassDto.java
 D:\java\Springmvc\MVC_online_medical\src\main\java\com\nt\controller\AdminController.java
 D:\java\Springmvc\MVC_online_medical\src\main\java\com\nt\Dto\UserDto.java

@@ -9,16 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-import org.springframework.web.multipart.MultipartFile;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Categories {
 	
 	@Id
@@ -30,7 +23,7 @@ public class Categories {
 	@Lob
 	private byte[] image;
 	
-
+//getter setter
 	
 	public byte[] getImage() {
 		return image;
@@ -54,6 +47,22 @@ public class Categories {
 
 	public void setCategory_name(String category_name) {
 		this.category_name = category_name;
+	}
+
+	
+	
+	public Categories(Long category_id, String category_name, byte[] image) {
+		super();
+		this.category_id = category_id;
+		this.category_name = category_name;
+		this.image = image;
+	}
+
+	
+	
+	public Categories() {
+		super();
+		
 	}
 
 	@Override

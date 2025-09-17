@@ -70,16 +70,11 @@
     <div class="login-card">
         <h3 class="text-center mb-4">Login</h3>
 		
-		<c:if test="${not empty success}">
-    <script>
-        alert("${success}");
-    </script>
-	</c:if>
-    <c:if test="${not empty errormsg}">
+		<c:if test="${not empty errormsg}">
     <script>
         alert("${errormsg}");
     </script>
-	</c:if>    
+</c:if>
 	
         <form action="login" method="post">
             <div class="mb-3">

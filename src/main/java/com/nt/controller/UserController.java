@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nt.Dto.ForgotPassDto;
 import com.nt.Dto.UserDto;
@@ -78,7 +79,7 @@ public class UserController {
 		}
 		
 		@RequestMapping("/login")
-		public String login(@RequestParam String userName,@RequestParam String password , HttpSession httpSession,Model model)
+		public String login(@RequestParam String userName,@RequestParam String password , HttpSession httpSession,RedirectAttributes model)
 		{
 			User user = userService.login(userName, password);
 			// boolean isvalid=userService.login(userName,password);
@@ -102,8 +103,8 @@ public class UserController {
 				 
 				 
 			 }
-			model.addAttribute("errormsg", "invalid userName or password");
-			return "login";
+			model.addFlashAttribute("errormsg", "invalid userName or password");
+			return "redirect:/loginpage";
 			
 		}
 		
@@ -114,31 +115,31 @@ public class UserController {
 			return "forgotPass";
 		}
 		@RequestMapping("/forgot")
-		public String ForgotPassword(@ModelAttribute ForgotPassDto forgotPassDto ,Model model) {
+		public String ForgotPassword(@ModelAttribute ForgotPassDto forgotPassDto ,RedirectAttributes model) {
 			String username=forgotPassDto.getUserName();
 			String pass=forgotPassDto.getPassword();
 			String conformpass=forgotPassDto.getConfirmPassword();
 			
 			if(username==null||pass == null || conformpass == null || !pass.equals(conformpass)){
-				model.addAttribute("error", " username or password not match ");
-				return"forgotPass";
+				model.addFlashAttribute("error", " username or password not match ");
+				return"redirect:/forgotpass";
 			}
 			String result=	userService.ForgotPassword(username,pass);
 			if ("failure".equals(result)) {
-		        model.addAttribute("error", "User not found or update failed");
-		        return "forgotPass";
+		        model.addFlashAttribute("error", "User not found or update failed");
+		        return "redirect:/forgotpass";
 		    }
-			model.addAttribute("success", "pasword update sucessfull");
-			return "login";
+			model.addFlashAttribute("success", "pasword update sucessfull");
+			return "redirect:/loginpage";
 			
 		}
 		/************************ Logout ***********************/
 		@RequestMapping("/logout")
-		public String logout(HttpSession httpSession,Model model)
+		public String logout(HttpSession httpSession,RedirectAttributes model)
 		{
 			httpSession.invalidate();
-			model.addAttribute("logout","logout sucess");
-			return "index";
+			model.addFlashAttribute("logout","logout sucess");
+			return "redirect:/";
 			
 		}
 
