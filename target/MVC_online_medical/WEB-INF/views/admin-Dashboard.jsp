@@ -33,6 +33,11 @@
     </script>
 </c:if>
 
+<c:if test="${not empty success}">
+    <script>
+        alert("${success}");
+    </script>
+</c:if>
    
 </body>
 <%@ include file="footer.jsp" %>

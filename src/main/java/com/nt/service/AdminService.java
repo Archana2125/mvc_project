@@ -1,5 +1,7 @@
 package com.nt.service;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
@@ -16,5 +18,9 @@ void addcategory(String category_name, MultipartFile imageFile);
 	void addBrand(Brands brands);
 
 	void addproduct(Products products, MultipartFile imageFile);
+
+	List<Categories> getCategories();
+
+	
 
 }

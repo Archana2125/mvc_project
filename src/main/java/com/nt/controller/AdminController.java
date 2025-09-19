@@ -1,5 +1,11 @@
 package com.nt.controller;
 
+import java.io.ByteArrayInputStream;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nt.Dao.BrandDao;
 import com.nt.Dao.CategoryDao;
+import com.nt.Dto.GetCategoryDto;
 import com.nt.Entity.Brands;
 import com.nt.Entity.Categories;
 import com.nt.Entity.Products;
@@ -34,6 +41,7 @@ public class AdminController {
 	/************************ admindashboard Page ***********************/
 	@RequestMapping("/adminpage")
 	public String registerUserpage() {
+		
 		return "admin-Dashboard";
 	}
 
@@ -102,6 +110,49 @@ public class AdminController {
 		return "redirect:/adminpage";
 
 	}
+/**************** catagory select*************************/
+	
+	@RequestMapping("/showcat")
+	public String showcategories(Model model) {
+		List<Categories> categoriesList=adminService.getCategories();
+		
+		List<GetCategoryDto> categoryDtos=new ArrayList<GetCategoryDto>();
+		for(Categories cat:categoriesList) {
+			GetCategoryDto dto=new GetCategoryDto();
+			dto.setId(cat.getCategory_id());
+			dto.setName(cat.getCategory_name());
+			
+			
+			if(cat.getImage() !=null) {
+				byte[] imageBytes = cat.getImage();
+				String base64=Base64.getEncoder().encodeToString(cat.getImage());
+				
+				String mimetype;
+				
+				
+				try {
+				mimetype=URLConnection.guessContentTypeFromStream(new ByteArrayInputStream(imageBytes));
+				} 
+				catch (Exception e) {
+	                mimetype = null;
+	            }
+				
+				
+				if(mimetype==null)
+				{
+					mimetype="image/jpeg";
+				}
+				String imageSrc="data:"+mimetype+";base64,"+base64;
+				
+				dto.setBase64Image(imageSrc);
+			}
+			categoryDtos.add(dto);
+		}
+		
+		model.addAttribute("categories", categoryDtos);
+		
+		return "getCategories";
+	}
 
 	/************************ Brands ***********************/
 
@@ -119,4 +170,7 @@ public class AdminController {
 		return "redirect:/adminpage";
 
 	}
-}
+		
+	
+	}
+

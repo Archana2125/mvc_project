@@ -11,6 +11,11 @@
 <div class="container mt-5">
     <div class="card p-4">
         <h3 class="mb-4 text-center">Add New Product</h3>
+        <c:if test="${not empty error}">
+    <script>
+        alert("${error}");
+    </script>
+</c:if>
 
         <form action="addProduct" method="post" enctype="multipart/form-data">
             

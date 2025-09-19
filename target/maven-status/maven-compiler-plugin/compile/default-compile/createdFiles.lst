@@ -12,6 +12,7 @@ com\nt\Dto\UserDto.class
 com\nt\Entity\Categories.class
 com\nt\Dao\BrandDao.class
 com\nt\controller\AdminController.class
+com\nt\Dto\GetCategoryDto.class
 com\nt\service\UserService.class
 com\nt\Dao\CategoryDao.class
 com\nt\Entity\Brands.class

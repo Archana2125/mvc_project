@@ -69,7 +69,7 @@
                     <a class="nav-link" href="productpage"><ion-icon name="add-circle-outline"></ion-icon> Add Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="manageProducts.jsp"><ion-icon name="construct-outline"></ion-icon> Manage Products</a>
+                    <a class="nav-link" href="showcat"><ion-icon name="construct-outline"></ion-icon> Manage Products</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="addcategory"><ion-icon name="pricetags-outline"></ion-icon> Add Categories</a>

@@ -23,9 +23,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class User {
 	
 	@Id
@@ -59,6 +56,35 @@ public class User {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	@NotNull
 	 private List<Address> addresses = new ArrayList<>();
+	
+	
+	
+	
+
+	public User(Long user_id, String first_name, String middle_name, String last_name, @Email String email,
+			String userName, String password, String confirmPassword, String role, String contactno,
+			@NotNull List<Address> addresses) {
+		super();
+		this.user_id = user_id;
+		this.first_name = first_name;
+		this.middle_name = middle_name;
+		this.last_name = last_name;
+		this.email = email;
+		this.userName = userName;
+		this.password = password;
+		this.confirmPassword = confirmPassword;
+		this.role = role;
+		this.contactno = contactno;
+		this.addresses = addresses;
+	}
+
+	
+	
+	public User() {
+		
+	}
+
+
 
 	public Long getUser_id() {
 		return user_id;

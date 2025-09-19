@@ -1,6 +1,7 @@
 package com.nt.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -70,6 +71,13 @@ public class AdminServiceImpl  implements AdminService{
 			e.printStackTrace();
 		}
 		
+	}
+
+
+
+	@Override
+	public List<Categories> getCategories() {
+	    return (List<Categories>) categoryDao.findAll();
 	}
 
 
