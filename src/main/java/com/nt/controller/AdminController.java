@@ -1,9 +1,11 @@
+
 package com.nt.controller;
 
 import java.io.ByteArrayInputStream;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.nt.Dao.BrandDao;
 import com.nt.Dao.CategoryDao;
 import com.nt.Dto.GetCategoryDto;
+import com.nt.Dto.GetProductDto;
 import com.nt.Entity.Brands;
 import com.nt.Entity.Categories;
 import com.nt.Entity.Products;
@@ -170,7 +174,51 @@ public class AdminController {
 		return "redirect:/adminpage";
 
 	}
-		
 	
+	/************************ viewproduct ***********************/
+	@RequestMapping("/getProductById/{categoryId}")
+	public String showProductsBycat(@PathVariable("categoryId") Long categoryId,Model model )
+	{
+		 List<Products> products =adminService.showProductsBycat(categoryId);
+		 
+		 List<GetProductDto> dtos=new ArrayList();
+		 for(Products p:products)
+		 {
+			 GetProductDto productDto=new GetProductDto();
+			productDto.setId(p.getProduct_id());
+			productDto.setName(p.getProduct_name());
+			productDto.setPrice(p.getPrice());
+			
+			
+			if(p.getImage() !=null)
+			{
+				byte[] imageBytes=p.getImage();
+				String base64=Base64.getEncoder().encodeToString(p.getImage());
+				
+				String mimetype;
+				try {
+					mimetype=URLConnection.guessContentTypeFromStream(new ByteArrayInputStream(imageBytes));
+				}
+				catch (Exception e) {
+					mimetype=null;
+				}
+				
+				if(mimetype==null)
+				{
+					mimetype="image/jpeg";
+				}
+				String imageSrc="data:"+mimetype+";base64,"+base64;
+				
+				productDto.setBase64Image(imageSrc);			
+				}
+			 dtos.add(productDto);
+		 }
+		model.addAttribute("product", dtos);
+	
+		
+		return"viewproduct";
 	}
 
+	
+	
+	}

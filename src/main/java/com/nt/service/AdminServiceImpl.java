@@ -81,6 +81,13 @@ public class AdminServiceImpl  implements AdminService{
 	}
 
 
+	@Override
+	public List<Products> showProductsBycat(Long categoryId) {
+		
+		return productDao.findByCategory_CategoryId(categoryId);
+		
+		
+	}
 
 	
 	

@@ -24,7 +24,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="/online_medical_store"/>
+	<classpathentry exported="true" kind="src" path="/online_medical_store"/>
 	<classpathentry kind="src" output="target/classes" path="src/main/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -38,8 +38,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Program Files/apache-tomcat-9.0.87/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/apache-tomcat-9.0.87/lib/tomcat-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/apache-tomcat-9.0.87/lib/servlet-api.jar"/>
 	<classpathentry kind="src" path="target/generated-sources/annotations">
 		<attributes>
 			<attribute name="optional" value="true"/>

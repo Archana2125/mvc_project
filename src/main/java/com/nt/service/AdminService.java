@@ -13,13 +13,17 @@ import com.nt.Entity.Products;
 
 
 public interface AdminService  {
-void addcategory(String category_name, MultipartFile imageFile);
+	
+	void addcategory(String category_name, MultipartFile imageFile);
 
 	void addBrand(Brands brands);
 
 	void addproduct(Products products, MultipartFile imageFile);
 
 	List<Categories> getCategories();
+	
+	List<Products> showProductsBycat(Long category);
+
 
 	
 

@@ -63,10 +63,11 @@ h2 {
 <div class="category-grid">
     <c:forEach var="cat" items="${categories}">
         <div class="category-card">
-        <a href="products/${cat.id}">
-            <img src="${cat.base64Image}" alt="${cat.name}" class="category-img"/>
-        </a>
-           <p>${cat.name}</p>
+            <c:url var="productUrl" value="/getProductById/${cat.id}" />
+				<a href="${productUrl}">
+				    <img src="${cat.base64Image}" alt="${cat.name}" class="category-img"/>
+				</a>
+            <p>${cat.name}</p>
         </div>
     </c:forEach>
 </div>

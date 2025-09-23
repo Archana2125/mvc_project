@@ -8,15 +8,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.Table;
+
 
 
 
 @Entity
+@Table(name = "categories")
 public class Categories {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long category_id;
+	@Column(name = "category_id")
+	private Long categoryId;
 	
 	private String category_name;
 	
@@ -34,11 +38,11 @@ public class Categories {
 	}
 
 	public Long getCategory_id() {
-		return category_id;
+		return categoryId;
 	}
 
 	public void setCategory_id(Long category_id) {
-		this.category_id = category_id;
+		this.categoryId = category_id;
 	}
 
 	public String getCategory_name() {
@@ -53,7 +57,7 @@ public class Categories {
 	
 	public Categories(Long category_id, String category_name, byte[] image) {
 		super();
-		this.category_id = category_id;
+		this.categoryId = category_id;
 		this.category_name = category_name;
 		this.image = image;
 	}
@@ -67,7 +71,7 @@ public class Categories {
 
 	@Override
 	public String toString() {
-		return "Categories [category_id=" + category_id + ", category_name=" + category_name + ", image="
+		return "Categories [category_id=" + categoryId + ", category_name=" + category_name + ", image="
 				+ Arrays.toString(image) + "]";
 	}
 	

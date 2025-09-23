@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -26,7 +27,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-
+@Table(name = "products")
 public class Products {
 	
 	@Id
