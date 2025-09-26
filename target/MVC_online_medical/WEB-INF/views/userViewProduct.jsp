@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>All Products</title>
+<jsp:include page="userHeader.jsp" />
 <style>
 .products-grid {
     display: flex;
@@ -50,4 +51,5 @@
 </div>
 
 </body>
+<%@ include file="footer.jsp" %>
 </html>
