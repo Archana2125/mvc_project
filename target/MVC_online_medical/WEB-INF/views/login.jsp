@@ -76,7 +76,7 @@
     </script>
 </c:if>
 	
-        <form action="login" method="post">
+        <form action="${pageContext.request.contextPath}/login" method="post">
             <div class="mb-3">
                 <label for="userName" class="form-label">Username</label>
                 <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter username" required>

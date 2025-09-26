@@ -44,7 +44,7 @@ public class AdminController {
 
 	/************************ admindashboard Page ***********************/
 	@RequestMapping("/adminpage")
-	public String registerUserpage() {
+	public String showadminDashbordpage() {
 		
 		return "admin-Dashboard";
 	}
@@ -192,30 +192,29 @@ public class AdminController {
 			
 			if(p.getImage() !=null)
 			{
+				try {
 				byte[] imageBytes=p.getImage();
 				String base64=Base64.getEncoder().encodeToString(p.getImage());
 				
 				String mimetype;
-				try {
+				
 					mimetype=URLConnection.guessContentTypeFromStream(new ByteArrayInputStream(imageBytes));
+					if(mimetype==null)
+					{
+						mimetype="image/jpeg";
+					}
+					String imageSrc="data:"+mimetype+";base64,"+base64;
+					
+					productDto.setBase64Image(imageSrc);			
+					}catch (Exception e) {
+						e.printStackTrace();
+						productDto.setBase64Image(null);
+					}
 				}
-				catch (Exception e) {
-					mimetype=null;
-				}
-				
-				if(mimetype==null)
-				{
-					mimetype="image/jpeg";
-				}
-				String imageSrc="data:"+mimetype+";base64,"+base64;
-				
-				productDto.setBase64Image(imageSrc);			
-				}
+			
 			 dtos.add(productDto);
 		 }
-		model.addAttribute("product", dtos);
-	
-		
+		model.addAttribute("products", dtos);
 		return"viewproduct";
 	}
 

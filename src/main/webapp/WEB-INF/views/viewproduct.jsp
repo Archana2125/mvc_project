@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Products in Category</title>
+<%@ include file="AdminHeader.jsp" %>
 <style>
 .products-grid {
     display: flex;
@@ -39,13 +40,16 @@
 
 <div class="products-grid">
     <c:forEach items="${products}" var="p">
-        <div class="product-card">
+    <div class="product-card">
+        <c:if test="${not empty p.base64Image}">
             <img src="${p.base64Image}" alt="${p.name}" />
-            <p>${p.name}</p>
-            <p>Price: $${p.price}</p>
-        </div>
-    </c:forEach>
-</div>
+        </c:if>
+        <p>${p.name}</p>
+        <p>Price: ${p.price}</p>
+    </div>
+</c:forEach>
 
+</div>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

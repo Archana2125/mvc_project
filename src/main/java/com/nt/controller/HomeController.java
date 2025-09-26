@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -78,7 +79,7 @@ public class HomeController {
 			return "login";
 		}
 		
-		@RequestMapping("/login")
+		@RequestMapping(value ="/login", method = RequestMethod.POST)
 		public String login(@RequestParam String userName,@RequestParam String password , HttpSession httpSession,RedirectAttributes model)
 		{
 			User user = userService.login(userName, password);
@@ -93,12 +94,12 @@ public class HomeController {
 				 if("admin".equalsIgnoreCase(role))
 				 {
 					 httpSession.setAttribute("adminName", user.getUser_name()); 
-					return "admin-Dashboard"; 
+					return "redirect:/adminpage"; 
 				 }
 				 
 				 else if ("user".equalsIgnoreCase(role)) {
 					 httpSession.setAttribute("userName", user.getUser_name()); 
-					return"user-Dashboard";
+					 return "redirect:/userDashborad";
 				}
 				 
 				 

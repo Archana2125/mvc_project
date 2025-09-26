@@ -36,7 +36,9 @@ public class Address {
 	@Column(nullable = false)
 	private String district;
 	
-	
+	@ManyToOne
+	@JoinColumn(name = "user_id",nullable = false)
+	private User user;
 	//gettrr setter
 	public Long getAddress_id() {
 		return address_id;
@@ -102,9 +104,7 @@ public class Address {
 		this.user = user;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "user_id",nullable = false)
-	private User user;
+	
 
 	@Override
 	public String toString() {
